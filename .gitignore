@@ -1,0 +1,15 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/.gitignore
+.idea/artifacts/
+.idea/compiler.xml
+.idea/crm.iml
+.idea/encodings.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+target/classes/com/datanetx/crm/settings/dao/UserDao.xml
+target/generated-sources/
+target/generated-test-sources/
+!/src/main/resource/jdbc.properties

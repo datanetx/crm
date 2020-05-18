@@ -1,4 +1,0 @@
-driver=com.mysql.jdbc.Driver
-url=jdbc:mysql://www.datanetx.com:3306/study?useUnicode=true&characterEncoding=UTF-8
-username=root
-password=<ut:xfdu&7OT

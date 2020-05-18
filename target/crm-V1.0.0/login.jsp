@@ -1,6 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<base href="<%=basePath%>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Login Page - Ace Admin</title>
@@ -33,6 +39,12 @@
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+
+		<script>
+			$(function () {
+				$("#loginUsernameText").focus();
+			})
+		</script>
 	</head>
 
 	<body class="login-layout">
@@ -67,7 +79,7 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control" placeholder="Username" id="loginUsernameText"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>

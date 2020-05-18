@@ -27,7 +27,7 @@ public class Test1 {
             System.out.println("ip地址受限，请联系管理员");
         }
 
-        System.out.println(MD5Util.getMd5("zspwd"));
         System.out.println(MD5Util.getMd5("lspwd"));
+        System.out.println(MD5Util.getMd5("123"));
     }
 }
