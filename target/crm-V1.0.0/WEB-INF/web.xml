@@ -8,7 +8,7 @@
 
   <display-name>crm</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   
   <servlet>
@@ -17,6 +17,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UserController</servlet-name>
-    <url-pattern>/settings/user/xxx.do</url-pattern>
+    <url-pattern>/settings/user/login.do</url-pattern>
   </servlet-mapping>
 </web-app>

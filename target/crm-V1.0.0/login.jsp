@@ -11,6 +11,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<meta charset="utf-8" />
 		<title>Login Page - Ace Admin</title>
 
+		<script type="text/javascript" src="js/jquery-3.5.0.js"></script>
+
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
@@ -41,10 +43,43 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		<![endif]-->
 
 		<script>
+			function login() {
+				//验证账号密码不能为空，并取得输入的账号密码
+				var loginAct=$.trim($("#loginAct").val());
+				var loginPwd=$.trim($("#loginPwd").val());
+
+				if(loginAct==""||loginPwd==""){
+					$("#verifyText").html("账号密码不能为空");
+					return false;
+				}
+
+				$.ajax({
+					url: "settings/user/login.do",
+					data: {
+						"loginAct",loginAct,
+						"loginPwd",loginPwd
+					},
+					type: "post",
+					dataType: "json",
+					success: function (data) {
+						if(data.sucess){
+							window.location.href="index.html";
+						}else {
+							$("#verifyMsg".html(data.msg));
+						}
+					}
+				})
+			}
+
 			$(function () {
-				$("#loginUsernameText").focus();
+				//$("#usrText").val("");
+				//$("#usrText").focus();
+				$("#submitBtn").click(function () {
+					login();
+				})
 			})
 		</script>
+
 	</head>
 
 	<body class="login-layout">
@@ -79,19 +114,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" id="loginUsernameText"/>
+															<input type="text" class="form-control" placeholder="Username" id="loginAct"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control" placeholder="Password" id="loginPwd"/>
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
 
-													<div class="space"></div>
+													<h5 class="red" id="verifyMsg"></h5>
+
+													<div class="space" ></div>
 
 													<div class="clearfix">
 														<label class="inline">
@@ -99,7 +136,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 															<span class="lbl"> Remember Me</span>
 														</label>
 
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="button" class="width-35 pull-right btn btn-sm btn-primary" id="submitBtn">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110">Login</span>
 														</button>
