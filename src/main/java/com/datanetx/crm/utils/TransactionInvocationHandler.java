@@ -8,7 +8,8 @@ import java.lang.reflect.Proxy;
 
 public class TransactionInvocationHandler implements InvocationHandler {
 
-    Object target;
+    private Object target;
+
     public TransactionInvocationHandler(Object target){
         this.target=target;
     }
@@ -23,6 +24,8 @@ public class TransactionInvocationHandler implements InvocationHandler {
             session.commit();
         }catch (Exception e) {
             session.rollback();
+            e.printStackTrace();
+            throw e.getCause();
         }finally {
             SqlSessionUtils.closeSession(session);
         }

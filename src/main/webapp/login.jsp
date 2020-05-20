@@ -65,18 +65,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					type: "post",
 					dataType: "json",
 					success: function (data) {
-						if(data.sucess){
+						if(data.success){
 							window.location.href="index.html";
 						}else {
-							$("#verifyMsg".html(data.msg));
+							$("#verifyMsg").html(data.msg);
 						}
 					}
 				})
 			}
 
 			$(function () {
-				//$("#usrText").val("");
-				//$("#usrText").focus();
 				$("#submitBtn").click(function () {
 					login();
 				})
