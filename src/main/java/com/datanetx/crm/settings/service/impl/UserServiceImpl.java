@@ -30,23 +30,32 @@ public class UserServiceImpl implements UserService {
 
         //验证失效时间
         String expireTime=user.getExpireTime();
+        System.out.println("expireTime:"+expireTime);
         String currentTime= DateTimeUtil.getSysTime();
-        if(expireTime!=null && expireTime.compareTo(currentTime)<0){
-            throw new LoginException("账号已失效");
+        if(expireTime!=null){
+            if(expireTime.compareTo(currentTime)<0) {
+                throw new LoginException("账号已失效");
+            }
         }
 
         //判断锁定状态
         String lockState=user.getLockState();
-        if(lockState!=null && "0".equals(lockState)){
-            throw new LoginException("账号已锁定");
+        System.out.println("lockState:"+lockState);
+        if(lockState!=null){
+            if("0".equals(lockState)) {
+                throw new LoginException("账号已锁定");
+            }
         }
 
         //判断ip地址
         String allowIps=user.getAllowIps();
-
-        if(!allowIps.contains(ip)){
-            throw new LoginException("ip地址受限");
+        System.out.println("allowIps:"+allowIps);
+        if (allowIps != null) {
+            if (!allowIps.contains(ip)) {
+                throw new LoginException("ip地址受限");
+            }
         }
+
         return user;
     }
 }

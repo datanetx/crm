@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					dataType: "json",
 					success: function (data) {
 						if(data.success){
-							window.location.href="index.html";
+							window.location.href="index.jsp";
 						}else {
 							$("#verifyMsg").html(data.msg);
 						}

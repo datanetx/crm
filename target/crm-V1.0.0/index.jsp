@@ -1,6 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<base href="<%=basePath%>">
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Dashboard - Ace Admin</title>
@@ -57,7 +63,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.html" class="navbar-brand">
+					<a href="index.jsp" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
 							Ace Admin
@@ -325,9 +331,9 @@
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
-								<span class="user-info">
+								<span class="user-info" id="welcomeName">
 									<small>Welcome,</small>
-									Jason
+									${sessionScope.user.name}
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -405,7 +411,7 @@
 
 				<ul class="nav nav-list">
 					<li class="active">
-						<a href="index.html">
+						<a href="index.jsp">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>

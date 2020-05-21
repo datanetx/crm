@@ -12,6 +12,17 @@
   </welcome-file-list>
 
   <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.datanetx.crm.web.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+    <url-pattern>*.jsp</url-pattern>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+
+  <filter>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>com.datanetx.crm.web.filter.EncodingFilter</filter-class>
   </filter>
